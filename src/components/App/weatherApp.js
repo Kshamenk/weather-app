@@ -12,13 +12,13 @@ export default function WeatherApp() {
     },[])
 
     useEffect(()=>{
-        document.title = `Weather | ${weather?.location.name ?? ''}  `
+        document.title = `Weather ${weather?.location.name ?? ''}  `
     },[weather])
 
 
     async function loadInfo(city = 'Villa Carlos Paz'){
         try {
-            const request = await fetch(`${process.env.REACT_APP_URL}&key=${process.env.REACT_APP_KEY}&q=${city}`);
+            const request = await fetch(`https://api.weatherapi.com/v1/current.json?aqi?=no&key=4f3c683992d243cdbed204950231209&q=${city}`);
             const json = await request.json();
             setTimeout(()=>{
                 setWeather({...json})
